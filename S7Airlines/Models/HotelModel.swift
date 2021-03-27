@@ -13,23 +13,38 @@ protocol AbstractCell {
 }
 
 struct HotelModel: AbstractCell {
-    let image = UIImage()
-    let text: String
+    let imageName: String
+    let title: String
+    let subtitle: String
+    let offers: [HotelOffer]
+
     func getType() -> MainPageCellTypes {
         return .hotel
+    }
+
+    struct HotelOffer {
+        let dates: String
+        let price: String
     }
 }
 
 struct CarModel: AbstractCell {
-    let image = UIImage()
+    let imageName: String
     let text: String
+    let offers: [CarOffer]
+
     func getType() -> MainPageCellTypes {
         return .car
+    }
+
+    struct CarOffer {
+        let dates: String
+        let price: String
     }
 }
 
 struct PromoModel: AbstractCell {
-    let image = UIImage()
+    let imageName: String
     let text: String
     func getType() -> MainPageCellTypes {
         return .promo

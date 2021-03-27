@@ -14,12 +14,13 @@ class MainPageViewModel: ViewModelBase {
     }
 
     var needs2update: Observable<Bool> = Observable<Bool>.init(false)
-
     var rows: [AbstractCell] {
         let rows: [AbstractCell] = [
-            HotelModel(text: "Отель"),
-            CarModel(text: "Машина"),
-            PromoModel(text: "Промо")]
+            HotelModel(imageName: "hotel", title: "Отель “Omg Dude!”", subtitle: "Благородный и недорогой отель для тех, кто хочет полюбить Москву всем сердцем. Дешевое бронирование на лето.", offers: [
+                        HotelModel.HotelOffer(dates: "3 апреля - 12 апреля (9 ночей)", price: "24 500 ₽"),
+                        HotelModel.HotelOffer(dates: "7 апреля - 11 апреля (4 ночей)", price: "13 550 ₽")]),
+            //CarModel(imageName: "sights", text: "Машина"),
+            PromoModel(imageName: "ticket", text: "Промо")]
         return rows
     }
     var tickets: [TicketModel] = [TicketModel(text: "blabla")]
