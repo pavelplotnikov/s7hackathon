@@ -8,17 +8,30 @@
 import Foundation
 import UIKit
 
-struct HotelModel {
-    let image = UIImage()
-    let text: String
+protocol AbstractCell {
+    func getType() -> MainPageCellTypes
 }
 
-struct CarModel {
+struct HotelModel: AbstractCell {
     let image = UIImage()
     let text: String
+    func getType() -> MainPageCellTypes {
+        return .hotel
+    }
 }
 
-struct PromoModel {
+struct CarModel: AbstractCell {
     let image = UIImage()
     let text: String
+    func getType() -> MainPageCellTypes {
+        return .car
+    }
+}
+
+struct PromoModel: AbstractCell {
+    let image = UIImage()
+    let text: String
+    func getType() -> MainPageCellTypes {
+        return .promo
+    }
 }
