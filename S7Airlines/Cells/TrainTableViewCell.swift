@@ -10,17 +10,6 @@ import UIKit
 class HotelTableViewCell: UITableViewCell {
 
     private struct Appearance {
-        static let inset: CGFloat = 4
-        static let lineSpacing: CGFloat = 3.0
-        static let imageWidth: CGFloat = 40
-        static let imageHeight: CGFloat = 40
-
-        static let lockImageWidth: CGFloat = 16
-        static let lockImageHeight: CGFloat = 16
-        static let lockImageRight: CGFloat = 2
-
-        static let additionalOffset: CGFloat = 4
-
         static let ratio: CGFloat = 343.0 / 213.0
     }
 
@@ -28,14 +17,16 @@ class HotelTableViewCell: UITableViewCell {
     let backView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 12
-        view.clipsToBounds = true
+        // view.clipsToBounds = true
         view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     let separatorView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.black.withAlphaComponent(0.05)
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
@@ -67,9 +58,20 @@ class HotelTableViewCell: UITableViewCell {
 
     let mainImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 12
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+
+    let iconImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.cornerRadius = 12
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "Hotel")
         return imageView
     }()
 
@@ -152,37 +154,37 @@ class HotelTableViewCell: UITableViewCell {
         contentView.addSubview(mainImageView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(subtitleLabel)
+        contentView.addSubview(iconImageView)
     }
 
     override func updateConstraints() {
         super.updateConstraints()
         NSLayoutConstraint.useAndActivate([
 
-            backView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            backView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
             backView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            backView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            backView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-
+            backView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            backView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
 
             mainImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             mainImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             // mainImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / Appearance.ratio),
-            mainImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            mainImageView.topAnchor.constraint(equalTo: backView.topAnchor),
             mainImageView.bottomAnchor.constraint(equalTo: offer1Label.topAnchor, constant: -12),
 
             subtitleLabel.bottomAnchor.constraint(equalTo: mainImageView.bottomAnchor, constant: -20),
-            subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            subtitleLabel.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 20),
+            subtitleLabel.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -20),
 
-            titleLabel.bottomAnchor.constraint(equalTo: subtitleLabel.topAnchor, constant: -20),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            titleLabel.bottomAnchor.constraint(equalTo: subtitleLabel.topAnchor, constant: -8),
+            titleLabel.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 20),
+            titleLabel.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -20),
 
             offer1Label.bottomAnchor.constraint(equalTo: offer2Label.topAnchor, constant: -20),
             offer1Label.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 12),
             offer1Label.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -12),
 
-            offer2Label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -14),
+            offer2Label.bottomAnchor.constraint(equalTo: backView.bottomAnchor, constant: -14),
             offer2Label.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 12),
             offer2Label.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -12),
 
@@ -190,14 +192,19 @@ class HotelTableViewCell: UITableViewCell {
             price1Label.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 12),
             price1Label.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -12),
 
-            price2Label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -14),
+            price2Label.bottomAnchor.constraint(equalTo: backView.bottomAnchor, constant: -14),
             price2Label.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 12),
             price2Label.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -12),
 
             separatorView.topAnchor.constraint(equalTo: offer1Label.bottomAnchor, constant: 10),
             separatorView.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 12),
             separatorView.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -12),
-            separatorView.heightAnchor.constraint(equalToConstant: 1)
+            separatorView.heightAnchor.constraint(equalToConstant: 1),
+
+            iconImageView.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 20),
+            iconImageView.topAnchor.constraint(equalTo: backView.topAnchor, constant: 22),
+            iconImageView.widthAnchor.constraint(equalToConstant: 20),
+            iconImageView.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
 
@@ -215,6 +222,8 @@ class HotelTableViewCell: UITableViewCell {
         price1Label.sizeToFit()
         price2Label.text = config.offers[1].price
         price2Label.sizeToFit()
+        // layoutIfNeeded()
+        // backView.dropShadow()
     }
 
     override func prepareForReuse() {
