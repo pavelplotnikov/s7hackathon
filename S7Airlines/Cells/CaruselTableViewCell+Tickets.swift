@@ -1,5 +1,5 @@
 //
-//  VIewController+Tickets.swift
+//  CaruselTableViewCell+Tickets.swift
 //  S7Airlines
 //
 //  Created by Pavel Plotnikov on 27.03.2021.
@@ -10,9 +10,9 @@ import UIKit
 import WebKit
 import SafariServices
 
-extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension CaruselTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.tickets.count
+        return tickets?.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -20,9 +20,9 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         guard let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TicketItemCell", for: indexPath) as? TicketCollectionViewCell else {
             return UICollectionViewCell()
         }
-        let promos = viewModel.tickets
+        let promos = tickets
 
-        myCell.configureCell(promos[indexPath.row])
+        myCell.configureCell(promos![indexPath.row])
         return myCell
 
     }

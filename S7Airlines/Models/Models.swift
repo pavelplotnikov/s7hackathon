@@ -77,3 +77,27 @@ struct InfoModel: AbstractCell {
         return .info
     }
 }
+
+struct AirModel: AbstractCell {
+    let imageName: String
+    let title: String
+    let subtitle: String
+    let offers: [AirOffer]
+
+    func getType() -> MainPageCellTypes {
+        return .air
+    }
+
+    struct AirOffer {
+        let dates: String
+        let price: String
+    }
+}
+
+struct CaruselModel: AbstractCell {
+    func getType() -> MainPageCellTypes {
+        return .carusel
+    }
+
+    var tickets: [TicketModel]
+}

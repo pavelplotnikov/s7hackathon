@@ -16,6 +16,7 @@ class ViewController: ViewControllerBase<MainPageViewModel> {
 
     private let tableView: UITableView = {
         let tableView = UITableView(frame: CGRect.zero, style: .grouped)
+        tableView.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 0, right: 0);
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .white
         return tableView
@@ -26,27 +27,6 @@ class ViewController: ViewControllerBase<MainPageViewModel> {
         return view
     }()
 
-    lazy var promoCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(
-            top: 0,
-            left: 8,
-            bottom: 0,
-            right: 8)
-        layout.itemSize = CGSize(width: 100, height: 100)
-        layout.scrollDirection = .horizontal
-        layout.minimumInteritemSpacing = 8
-
-        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        collectionView.allowsSelection = true
-        collectionView.allowsMultipleSelection = false
-        collectionView.alwaysBounceHorizontal = false
-        collectionView.backgroundColor = .clear
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        return collectionView
-    }()
-
     override func loadView() {
         super.loadView()
         edgesForExtendedLayout = []
@@ -54,15 +34,8 @@ class ViewController: ViewControllerBase<MainPageViewModel> {
         view.addSubview(bar)
         setupTableView()
         createLayout()
-        setupCollectionView()
         setupBindings()
         view.backgroundColor = .white
-    }
-
-    func setupCollectionView() {
-        promoCollectionView.register(TicketCollectionViewCell.self, forCellWithReuseIdentifier: "TicketItemCell")
-        promoCollectionView.delegate = self
-        promoCollectionView.dataSource = self
     }
 
     private func setupBindings() {
@@ -91,6 +64,8 @@ class ViewController: ViewControllerBase<MainPageViewModel> {
         tableView.register(InfoTableViewCell.self, forCellReuseIdentifier: "infoCell")
         tableView.register(EventTableViewCell.self, forCellReuseIdentifier: "eventCell")
         tableView.register(TrainTableViewCell.self, forCellReuseIdentifier: "trainCell")
+        tableView.register(AirTableViewCell.self, forCellReuseIdentifier: "airCell")
+        tableView.register(CaruselTableViewCell.self, forCellReuseIdentifier: "caruselCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
@@ -99,6 +74,9 @@ class ViewController: ViewControllerBase<MainPageViewModel> {
         tableView.sectionFooterHeight = 0
         tableView.delegate = self
         tableView.dataSource = self
+        let footerView = MainFooterView()
+        footerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 148)
+        tableView.tableFooterView = footerView
     }
 }
 
@@ -129,6 +107,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = cell as! TrainTableViewCell
             cell.layoutIfNeeded()
             cell.backView.dropShadow()
+        case .air:
+            let cell = cell as! AirTableViewCell
+            cell.layoutIfNeeded()
+            cell.backView.dropShadow()
         default:
             break
         }
@@ -137,10 +119,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let rowType = viewModel.rows[indexPath.row].getType()
         switch rowType {
-        case .hotel: // Hotel
+        case .hotel:
             viewModel.selectButton(index: indexPath.row)
-//        case .car: //
-//            viewModel.selectButton(index: indexPath.row)
         default:
             break
         }
@@ -178,6 +158,18 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
             cell.configureCell(viewModel.rows[indexPath.row] as! TrainModel)
+            return cell
+        case .air:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "airCell", for: indexPath) as? AirTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.configureCell(viewModel.rows[indexPath.row] as! AirModel)
+            return cell
+        case .carusel:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "caruselCell", for: indexPath) as? CaruselTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.configureCell(viewModel.rows[indexPath.row] as! CaruselModel)
             return cell
         default:
             return UITableViewCell()

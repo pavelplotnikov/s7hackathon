@@ -12,6 +12,12 @@ class MainPageViewModel: ViewModelBase {
     var needs2update: Observable<Bool> = Observable<Bool>.init(false)
     var rows: [AbstractCell] {
         let rows: [AbstractCell] = [
+            CaruselModel(tickets: [
+                TicketModel(title: "S7 2542", time: "19:35", text: "Красноярск-Москва", imageName: "krsk"),
+                TicketModel(title: "Аэроэкспресс", time: "17:10", text: "Москва-Домодедово", imageName: "krsk"),
+                TicketModel(title: "S7 2543", time: "20:05", text: "Москва-Красноярск", imageName: "return"),
+                TicketModel(title: "", time: "", text: "", imageName: "addTicket")
+                ]),
             HotelModel(imageName: "hotel", title: "Отель “Omg Dude!”", subtitle: "Благородный и недорогой отель для тех, кто хочет полюбить Москву всем сердцем. Дешевое бронирование на лето.", offers: [
                         HotelModel.HotelOffer(dates: "3 апреля - 12 апреля (9 ночей)", price: "24 500 ₽"),
                         HotelModel.HotelOffer(dates: "7 апреля - 11 апреля (4 ночей)", price: "13 550 ₽")]),
@@ -23,10 +29,12 @@ class MainPageViewModel: ViewModelBase {
                         TrainModel.TrainOffer(dates: "Домодедово - Москва (туда-обратно)", price: "750 ₽")]),
             InfoModel(imageName: "art", title: "Арт-Москва", subtitle: "Поход в музей или в галерею — неотъемлемый пункт программы каждого туриста. Мы выбрали самые интересные места, в которых можно увидеть работы современных российских художников или европейских классиков."),
             ArticleModel(imageName: "corona", title: "Коронавирус – как быть?", subtitle: "Рассказываем, что делать, если коронавирус меняет ваши планы: мы собрали всю актуальную информацию об ограничениях на въезд, отмене рейсов и рекомендациях по безопасности."),
+            AirModel(imageName: "ticket", title: "Го в Амстердам!", subtitle: "Из-за коронавирусных ограничений стало очень выгодно летать в Нидерланды. Собрали для вас самые выгодные даты", offers: [
+                        AirModel.AirOffer(dates: "7 апреля - 19 апреля (12 дней)", price: "40 450 ₽"),
+                        AirModel.AirOffer(dates: "29 апреля - 5 мая апреля (8 дней)", price: "31 950 ₽")]),
         ]
         return rows
     }
-    var tickets: [TicketModel] = [TicketModel(text: "blabla")]
 
     required override init() {
         super.init()
@@ -48,4 +56,6 @@ enum MainPageCellTypes: String {
     case info
     case event
     case train
+    case air
+    case carusel
 }

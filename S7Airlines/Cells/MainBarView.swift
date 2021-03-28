@@ -24,7 +24,7 @@ class MainBarView: UIView {
     private lazy var subtitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
-        label.textColor = .label
+        label.textColor = UIColor(named: "secondaryText")
         label.numberOfLines = 0
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
