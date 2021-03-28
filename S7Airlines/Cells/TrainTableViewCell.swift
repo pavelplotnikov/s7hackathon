@@ -1,5 +1,5 @@
 //
-//  HotelTableViewCell.swift
+//  TrainTableViewCell.swift
 //  S7Airlines
 //
 //  Created by Pavel Plotnikov on 27.03.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HotelTableViewCell: UITableViewCell {
+class TrainTableViewCell: UITableViewCell {
 
     private struct Appearance {
         static let ratio: CGFloat = 343.0 / 213.0
@@ -61,7 +61,7 @@ class HotelTableViewCell: UITableViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 12
         imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
 
@@ -71,7 +71,7 @@ class HotelTableViewCell: UITableViewCell {
         imageView.layer.cornerRadius = 12
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "Hotel")
+        imageView.image = UIImage(named: "AE")
         return imageView
     }()
 
@@ -161,14 +161,14 @@ class HotelTableViewCell: UITableViewCell {
         super.updateConstraints()
         NSLayoutConstraint.useAndActivate([
 
-            backView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
+            backView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             backView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             backView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
             backView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
 
             mainImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             mainImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            // mainImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / Appearance.ratio),
+            mainImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / Appearance.ratio),
             mainImageView.topAnchor.constraint(equalTo: backView.topAnchor),
             mainImageView.bottomAnchor.constraint(equalTo: offer1Label.topAnchor, constant: -12),
 
@@ -208,7 +208,7 @@ class HotelTableViewCell: UITableViewCell {
         ])
     }
 
-    func configureCell(_ config: HotelModel) {
+    func configureCell(_ config: TrainModel) {
         titleLabel.text = config.title
         titleLabel.sizeToFit()
         subtitleLabel.text = config.subtitle
@@ -230,6 +230,7 @@ class HotelTableViewCell: UITableViewCell {
         super.prepareForReuse()
         titleLabel.text = nil
         subtitleLabel.text = nil
+        mainImageView.image = nil
     }
 }
 

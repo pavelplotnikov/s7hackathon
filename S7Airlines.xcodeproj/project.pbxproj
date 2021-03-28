@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		1869AFFF260F4F67007F1CFF /* TicketCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869AFFE260F4F67007F1CFF /* TicketCollectionViewCell.swift */; };
 		1869B002260F5053007F1CFF /* VIewController+Tickets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869B001260F5053007F1CFF /* VIewController+Tickets.swift */; };
+		1869B00B260F815E007F1CFF /* DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869B00A260F815E007F1CFF /* DropShadow.swift */; };
+		1869B00E260F8C4E007F1CFF /* HotelTableViewCell copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869B00D260F8C4E007F1CFF /* HotelTableViewCell copy.swift */; };
+		1869B012260FCB9A007F1CFF /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869B011260FCB9A007F1CFF /* InfoTableViewCell.swift */; };
+		1869B015260FCF3D007F1CFF /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869B014260FCF3D007F1CFF /* EventTableViewCell.swift */; };
+		1869B019260FD170007F1CFF /* TrainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869B018260FD170007F1CFF /* TrainTableViewCell.swift */; };
+		1869B01D261032D2007F1CFF /* MainFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869B01C261032D2007F1CFF /* MainFooterView.swift */; };
+		1869B020261032FD007F1CFF /* MainBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869B01F261032FD007F1CFF /* MainBarView.swift */; };
 		1883A76D260F1E640059830A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883A76C260F1E640059830A /* AppDelegate.swift */; };
 		1883A771260F1E640059830A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883A770260F1E640059830A /* ViewController.swift */; };
 		1883A776260F1E660059830A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1883A775260F1E660059830A /* Assets.xcassets */; };
@@ -19,12 +26,19 @@
 		1883A78D260F20810059830A /* ViewControllerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883A78C260F20810059830A /* ViewControllerBase.swift */; };
 		1883A790260F20C00059830A /* DefaultSpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883A78F260F20C00059830A /* DefaultSpinnerView.swift */; };
 		1883A793260F248E0059830A /* HotelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883A792260F248E0059830A /* HotelModel.swift */; };
-		1883A797260F3D1E0059830A /* HotelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883A796260F3D1E0059830A /* HotelTableViewCell.swift */; };
+		1883A797260F3D1E0059830A /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883A796260F3D1E0059830A /* ArticleTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1869AFFE260F4F67007F1CFF /* TicketCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketCollectionViewCell.swift; sourceTree = "<group>"; };
 		1869B001260F5053007F1CFF /* VIewController+Tickets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VIewController+Tickets.swift"; sourceTree = "<group>"; };
+		1869B00A260F815E007F1CFF /* DropShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropShadow.swift; sourceTree = "<group>"; };
+		1869B00D260F8C4E007F1CFF /* HotelTableViewCell copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HotelTableViewCell copy.swift"; sourceTree = "<group>"; };
+		1869B011260FCB9A007F1CFF /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
+		1869B014260FCF3D007F1CFF /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		1869B018260FD170007F1CFF /* TrainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainTableViewCell.swift; sourceTree = "<group>"; };
+		1869B01C261032D2007F1CFF /* MainFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFooterView.swift; sourceTree = "<group>"; };
+		1869B01F261032FD007F1CFF /* MainBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBarView.swift; sourceTree = "<group>"; };
 		1883A769260F1E640059830A /* S7Airlines.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = S7Airlines.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1883A76C260F1E640059830A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1883A770260F1E640059830A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -37,7 +51,7 @@
 		1883A78C260F20810059830A /* ViewControllerBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerBase.swift; sourceTree = "<group>"; };
 		1883A78F260F20C00059830A /* DefaultSpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSpinnerView.swift; sourceTree = "<group>"; };
 		1883A792260F248E0059830A /* HotelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelModel.swift; sourceTree = "<group>"; };
-		1883A796260F3D1E0059830A /* HotelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelTableViewCell.swift; sourceTree = "<group>"; };
+		1883A796260F3D1E0059830A /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +65,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1869B009260F814E007F1CFF /* Exts */ = {
+			isa = PBXGroup;
+			children = (
+				1869B00A260F815E007F1CFF /* DropShadow.swift */,
+			);
+			path = Exts;
+			sourceTree = "<group>";
+		};
 		1883A760260F1E640059830A = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +92,7 @@
 		1883A76B260F1E640059830A /* S7Airlines */ = {
 			isa = PBXGroup;
 			children = (
+				1869B009260F814E007F1CFF /* Exts */,
 				1883A79A260F3D230059830A /* Cells */,
 				1883A795260F309A0059830A /* Models */,
 				1883A784260F1FEF0059830A /* Base */,
@@ -107,7 +130,13 @@
 		1883A79A260F3D230059830A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				1883A796260F3D1E0059830A /* HotelTableViewCell.swift */,
+				1869B00D260F8C4E007F1CFF /* HotelTableViewCell copy.swift */,
+				1869B018260FD170007F1CFF /* TrainTableViewCell.swift */,
+				1869B014260FCF3D007F1CFF /* EventTableViewCell.swift */,
+				1883A796260F3D1E0059830A /* ArticleTableViewCell.swift */,
+				1869B011260FCB9A007F1CFF /* InfoTableViewCell.swift */,
+				1869B01C261032D2007F1CFF /* MainFooterView.swift */,
+				1869B01F261032FD007F1CFF /* MainBarView.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -182,15 +211,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				1869B002260F5053007F1CFF /* VIewController+Tickets.swift in Sources */,
+				1869B00E260F8C4E007F1CFF /* HotelTableViewCell copy.swift in Sources */,
 				1883A786260F20010059830A /* ViewModelBase.swift in Sources */,
 				1883A793260F248E0059830A /* HotelModel.swift in Sources */,
 				1883A782260F1FB50059830A /* MainPageViewModel.swift in Sources */,
 				1883A790260F20C00059830A /* DefaultSpinnerView.swift in Sources */,
+				1869B019260FD170007F1CFF /* TrainTableViewCell.swift in Sources */,
 				1869AFFF260F4F67007F1CFF /* TicketCollectionViewCell.swift in Sources */,
-				1883A797260F3D1E0059830A /* HotelTableViewCell.swift in Sources */,
+				1883A797260F3D1E0059830A /* ArticleTableViewCell.swift in Sources */,
+				1869B020261032FD007F1CFF /* MainBarView.swift in Sources */,
 				1883A771260F1E640059830A /* ViewController.swift in Sources */,
+				1869B01D261032D2007F1CFF /* MainFooterView.swift in Sources */,
 				1883A78D260F20810059830A /* ViewControllerBase.swift in Sources */,
+				1869B015260FCF3D007F1CFF /* EventTableViewCell.swift in Sources */,
 				1883A76D260F1E640059830A /* AppDelegate.swift in Sources */,
+				1869B012260FCB9A007F1CFF /* InfoTableViewCell.swift in Sources */,
+				1869B00B260F815E007F1CFF /* DropShadow.swift in Sources */,
 				1883A78A260F20450059830A /* Observable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

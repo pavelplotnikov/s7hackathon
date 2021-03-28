@@ -1,5 +1,5 @@
 //
-//  HotelTableViewCell.swift
+//  ArticleTableViewCell.swift
 //  S7Airlines
 //
 //  Created by Pavel Plotnikov on 27.03.2021.
@@ -7,20 +7,9 @@
 
 import UIKit
 
-class HotelTableViewCell: UITableViewCell {
+class ArticleTableViewCell: UITableViewCell {
 
     private struct Appearance {
-        static let inset: CGFloat = 4
-        static let lineSpacing: CGFloat = 3.0
-        static let imageWidth: CGFloat = 40
-        static let imageHeight: CGFloat = 40
-
-        static let lockImageWidth: CGFloat = 16
-        static let lockImageHeight: CGFloat = 16
-        static let lockImageRight: CGFloat = 2
-
-        static let additionalOffset: CGFloat = 4
-
         static let ratio: CGFloat = 343.0 / 213.0
     }
 
@@ -28,15 +17,7 @@ class HotelTableViewCell: UITableViewCell {
     let backView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 12
-        // view.clipsToBounds = true
         view.backgroundColor = .white
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
-    let separatorView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.05)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -72,7 +53,7 @@ class HotelTableViewCell: UITableViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 12
         imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
 
@@ -82,64 +63,8 @@ class HotelTableViewCell: UITableViewCell {
         imageView.layer.cornerRadius = 12
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "Hotel")
+        imageView.image = UIImage(named: "Insurance")
         return imageView
-    }()
-
-    let offer1Label: UILabel = {
-        let label = UILabel()
-        label.adjustsFontForContentSizeCategory = true
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.numberOfLines = 0
-        label.textColor = .label
-        label.textAlignment = .left
-        label.lineBreakMode = .byWordWrapping
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
-        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        return label
-    }()
-
-    let offer2Label: UILabel = {
-        let label = UILabel()
-        label.adjustsFontForContentSizeCategory = true
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.numberOfLines = 0
-        label.textColor = .label
-        label.textAlignment = .left
-        label.lineBreakMode = .byWordWrapping
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
-        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        return label
-    }()
-
-    let price1Label: UILabel = {
-        let label = UILabel()
-        label.adjustsFontForContentSizeCategory = true
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.numberOfLines = 0
-        label.textColor = UIColor(named: "priceColor")
-        label.textAlignment = .right
-        label.lineBreakMode = .byWordWrapping
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
-        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        return label
-    }()
-
-    let price2Label: UILabel = {
-        let label = UILabel()
-        label.adjustsFontForContentSizeCategory = true
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.numberOfLines = 0
-        label.textColor = UIColor(named: "priceColor")
-        label.textAlignment = .right
-        label.lineBreakMode = .byWordWrapping
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
-        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        return label
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -156,15 +81,10 @@ class HotelTableViewCell: UITableViewCell {
 
     func setupViews() {
         contentView.addSubview(backView)
-        contentView.addSubview(separatorView)
-        contentView.addSubview(offer1Label)
-        contentView.addSubview(offer2Label)
-        contentView.addSubview(price1Label)
-        contentView.addSubview(price2Label)
-        contentView.addSubview(separatorView)
         contentView.addSubview(mainImageView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(subtitleLabel)
+        contentView.addSubview(iconImageView)
     }
 
     override func updateConstraints() {
@@ -174,61 +94,36 @@ class HotelTableViewCell: UITableViewCell {
             backView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             backView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             backView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-            backView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
+            backView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
 
             mainImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             mainImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            // mainImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / Appearance.ratio),
+            mainImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / Appearance.ratio),
             mainImageView.topAnchor.constraint(equalTo: backView.topAnchor),
-            mainImageView.bottomAnchor.constraint(equalTo: offer1Label.topAnchor, constant: -12),
+            mainImageView.bottomAnchor.constraint(equalTo: backView.bottomAnchor),
 
             subtitleLabel.bottomAnchor.constraint(equalTo: mainImageView.bottomAnchor, constant: -20),
-            subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            subtitleLabel.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 20),
+            subtitleLabel.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -20),
 
-            titleLabel.bottomAnchor.constraint(equalTo: subtitleLabel.topAnchor, constant: -20),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-
-            offer1Label.bottomAnchor.constraint(equalTo: offer2Label.topAnchor, constant: -20),
-            offer1Label.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 12),
-            offer1Label.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -12),
-
-            offer2Label.bottomAnchor.constraint(equalTo: backView.bottomAnchor, constant: -14),
-            offer2Label.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 12),
-            offer2Label.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -12),
-
-            price1Label.bottomAnchor.constraint(equalTo: offer2Label.topAnchor, constant: -20),
-            price1Label.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 12),
-            price1Label.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -12),
-
-            price2Label.bottomAnchor.constraint(equalTo: backView.bottomAnchor, constant: -14),
-            price2Label.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 12),
-            price2Label.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -12),
-
-            separatorView.topAnchor.constraint(equalTo: offer1Label.bottomAnchor, constant: 10),
-            separatorView.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 12),
-            separatorView.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -12),
-            separatorView.heightAnchor.constraint(equalToConstant: 1)
+            titleLabel.bottomAnchor.constraint(equalTo: subtitleLabel.topAnchor, constant: -8),
+            titleLabel.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 20),
+            titleLabel.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -20),
+            
+            iconImageView.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 20),
+            iconImageView.topAnchor.constraint(equalTo: backView.topAnchor, constant: 22),
+            iconImageView.widthAnchor.constraint(equalToConstant: 20),
+            iconImageView.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
 
-    func configureCell(_ config: HotelModel) {
+    func configureCell(_ config: ArticleModel) {
         titleLabel.text = config.title
         titleLabel.sizeToFit()
         subtitleLabel.text = config.subtitle
         subtitleLabel.sizeToFit()
         mainImageView.image = UIImage(named: config.imageName)
-        offer1Label.text = config.offers[0].dates
-        offer1Label.sizeToFit()
-        offer2Label.text = config.offers[1].dates
-        offer2Label.sizeToFit()
-        price1Label.text = config.offers[0].price
-        price1Label.sizeToFit()
-        price2Label.text = config.offers[1].price
-        price2Label.sizeToFit()
-        // layoutIfNeeded()
-        // backView.dropShadow()
+        mainImageView.sizeToFit()
     }
 
     override func prepareForReuse() {

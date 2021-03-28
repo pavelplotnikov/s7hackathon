@@ -10,17 +10,6 @@ import UIKit
 class HotelTableViewCell: UITableViewCell {
 
     private struct Appearance {
-        static let inset: CGFloat = 4
-        static let lineSpacing: CGFloat = 3.0
-        static let imageWidth: CGFloat = 40
-        static let imageHeight: CGFloat = 40
-
-        static let lockImageWidth: CGFloat = 16
-        static let lockImageHeight: CGFloat = 16
-        static let lockImageRight: CGFloat = 2
-
-        static let additionalOffset: CGFloat = 4
-
         static let ratio: CGFloat = 343.0 / 213.0
     }
 
@@ -165,6 +154,7 @@ class HotelTableViewCell: UITableViewCell {
         contentView.addSubview(mainImageView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(subtitleLabel)
+        contentView.addSubview(iconImageView)
     }
 
     override func updateConstraints() {
@@ -174,7 +164,7 @@ class HotelTableViewCell: UITableViewCell {
             backView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             backView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             backView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-            backView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
+            backView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
 
             mainImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             mainImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
@@ -183,12 +173,12 @@ class HotelTableViewCell: UITableViewCell {
             mainImageView.bottomAnchor.constraint(equalTo: offer1Label.topAnchor, constant: -12),
 
             subtitleLabel.bottomAnchor.constraint(equalTo: mainImageView.bottomAnchor, constant: -20),
-            subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            subtitleLabel.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 20),
+            subtitleLabel.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -20),
 
-            titleLabel.bottomAnchor.constraint(equalTo: subtitleLabel.topAnchor, constant: -20),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            titleLabel.bottomAnchor.constraint(equalTo: subtitleLabel.topAnchor, constant: -8),
+            titleLabel.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 20),
+            titleLabel.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -20),
 
             offer1Label.bottomAnchor.constraint(equalTo: offer2Label.topAnchor, constant: -20),
             offer1Label.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 12),
@@ -209,7 +199,12 @@ class HotelTableViewCell: UITableViewCell {
             separatorView.topAnchor.constraint(equalTo: offer1Label.bottomAnchor, constant: 10),
             separatorView.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 12),
             separatorView.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -12),
-            separatorView.heightAnchor.constraint(equalToConstant: 1)
+            separatorView.heightAnchor.constraint(equalToConstant: 1),
+
+            iconImageView.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 20),
+            iconImageView.topAnchor.constraint(equalTo: backView.topAnchor, constant: 22),
+            iconImageView.widthAnchor.constraint(equalToConstant: 20),
+            iconImageView.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
 

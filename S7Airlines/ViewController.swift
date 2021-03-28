@@ -17,7 +17,13 @@ class ViewController: ViewControllerBase<MainPageViewModel> {
     private let tableView: UITableView = {
         let tableView = UITableView(frame: CGRect.zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = .white
         return tableView
+    }()
+
+    private let bar: UIView = {
+        let view = MainBarView()
+        return view
     }()
 
     lazy var promoCollectionView: UICollectionView = {
@@ -43,13 +49,14 @@ class ViewController: ViewControllerBase<MainPageViewModel> {
 
     override func loadView() {
         super.loadView()
-        self.view.backgroundColor = .yellow
         edgesForExtendedLayout = []
         view.addSubview(tableView)
+        view.addSubview(bar)
         setupTableView()
         createLayout()
         setupCollectionView()
         setupBindings()
+        view.backgroundColor = .white
     }
 
     func setupCollectionView() {
@@ -66,7 +73,10 @@ class ViewController: ViewControllerBase<MainPageViewModel> {
 
     private func createLayout() {
         NSLayoutConstraint.useAndActivate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            bar.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
+            bar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            bar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.topAnchor.constraint(equalTo: bar.bottomAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -77,6 +87,10 @@ class ViewController: ViewControllerBase<MainPageViewModel> {
     private func setupTableView() {
         tableView.separatorStyle = .none
         tableView.register(HotelTableViewCell.self, forCellReuseIdentifier: "hotelCell")
+        tableView.register(ArticleTableViewCell.self, forCellReuseIdentifier: "articleCell")
+        tableView.register(InfoTableViewCell.self, forCellReuseIdentifier: "infoCell")
+        tableView.register(EventTableViewCell.self, forCellReuseIdentifier: "eventCell")
+        tableView.register(TrainTableViewCell.self, forCellReuseIdentifier: "trainCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
@@ -89,6 +103,36 @@ class ViewController: ViewControllerBase<MainPageViewModel> {
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let rowType = viewModel.rows[indexPath.row].getType()
+        switch rowType {
+        case .hotel:
+            let cell = cell as! HotelTableViewCell
+            cell.layoutIfNeeded()
+            cell.backView.dropShadow()
+
+        case .article:
+            let cell = cell as! ArticleTableViewCell
+            cell.layoutIfNeeded()
+            cell.backView.dropShadow()
+        case .event:
+            let cell = cell as! EventTableViewCell
+            cell.layoutIfNeeded()
+            cell.backView.dropShadow()
+
+        case .info:
+            let cell = cell as! InfoTableViewCell
+            cell.layoutIfNeeded()
+            cell.backView.dropShadow()
+        case .train:
+            let cell = cell as! TrainTableViewCell
+            cell.layoutIfNeeded()
+            cell.backView.dropShadow()
+        default:
+            break
+        }
+    }
 
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let rowType = viewModel.rows[indexPath.row].getType()
@@ -110,6 +154,30 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
             cell.configureCell(viewModel.rows[indexPath.row] as! HotelModel)
+            return cell
+        case .article:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "articleCell", for: indexPath) as? ArticleTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.configureCell(viewModel.rows[indexPath.row] as! ArticleModel)
+            return cell
+        case .info:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as? InfoTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.configureCell(viewModel.rows[indexPath.row] as! InfoModel)
+            return cell
+        case .event:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as? EventTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.configureCell(viewModel.rows[indexPath.row] as! EventModel)
+            return cell
+        case .train:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "trainCell", for: indexPath) as? TrainTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.configureCell(viewModel.rows[indexPath.row] as! TrainModel)
             return cell
         default:
             return UITableViewCell()

@@ -28,25 +28,52 @@ struct HotelModel: AbstractCell {
     }
 }
 
-struct CarModel: AbstractCell {
+struct TrainModel: AbstractCell {
     let imageName: String
-    let text: String
-    let offers: [CarOffer]
+    let title: String
+    let subtitle: String
+    let offers: [TrainOffer]
 
     func getType() -> MainPageCellTypes {
-        return .car
+        return .train
     }
 
-    struct CarOffer {
+    struct TrainOffer {
         let dates: String
         let price: String
     }
 }
 
-struct PromoModel: AbstractCell {
+struct EventModel: AbstractCell {
     let imageName: String
-    let text: String
+    let title: String
+    let subtitle: String
+    let date: EventOffer
+
     func getType() -> MainPageCellTypes {
-        return .promo
+        return .event
+    }
+
+    struct EventOffer {
+        let dates: String
+        let price: String
+    }
+}
+
+struct ArticleModel: AbstractCell {
+    let imageName: String
+    let title: String
+    let subtitle: String
+    func getType() -> MainPageCellTypes {
+        return .article
+    }
+}
+
+struct InfoModel: AbstractCell {
+    let imageName: String
+    let title: String
+    let subtitle: String
+    func getType() -> MainPageCellTypes {
+        return .info
     }
 }
