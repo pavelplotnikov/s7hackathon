@@ -106,11 +106,6 @@ class CaruselTableViewCell: UITableViewCell {
     func configureCell(_ config: CaruselModel) {
         tickets = config.tickets
     }
-
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        titleLabel.text = nil
-    }
 }
 
 

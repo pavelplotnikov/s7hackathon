@@ -69,8 +69,6 @@ class AirTableViewCell: UITableViewCell {
     let iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.cornerRadius = 12
-        imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named: "Flight")
         return imageView

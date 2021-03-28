@@ -61,15 +61,13 @@ class HotelTableViewCell: UITableViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 12
         imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
 
     let iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.cornerRadius = 12
-        imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named: "Hotel")
         return imageView
@@ -168,7 +166,7 @@ class HotelTableViewCell: UITableViewCell {
 
             mainImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             mainImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            // mainImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / Appearance.ratio),
+            mainImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / Appearance.ratio),
             mainImageView.topAnchor.constraint(equalTo: backView.topAnchor),
             mainImageView.bottomAnchor.constraint(equalTo: offer1Label.topAnchor, constant: -12),
 
